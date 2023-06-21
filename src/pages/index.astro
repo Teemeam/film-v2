@@ -1,10 +1,22 @@
 ---
+import credentials from '../lib/credentials';
+
+/* Components */
 import Layout from '../layouts/Layout.astro';
 import Root from '../components/Root.astro';
+
+/**
+ * Fetch data
+ */
+const response = await fetch(
+  `https://www.flickr.com/services/rest/?method=flickr.photosets.getPhotos&api_key=${credentials.app_key}&photoset_id=${credentials.photoset_id}&user_id=${credentials.user_id}&format=json&nojsoncallback=1`
+);
+
+const data = await response.json();
 ---
 
 <Layout title='FLICKR ASTRO'>
   <main>
-    <Root />
+    <Root data={data} />
   </main>
 </Layout>

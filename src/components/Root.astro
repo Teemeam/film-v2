@@ -1,15 +1,26 @@
 ---
+import credentials from '../lib/credentials';
+
+/* Components */
 import App from './App';
 
-const app_key = '5eb244406a33d48b10c1123269a7f5eb';
-const photoset_id = '72157718780020052';
-const user_id = '134442412@N06';
+/* Props */
+const { data } = Astro.props;
 
-const response = await fetch(
-  `https://www.flickr.com/services/rest/?method=flickr.photosets.getPhotos&api_key=${app_key}&photoset_id=${photoset_id}&user_id=${user_id}&format=json&nojsoncallback=1`
-);
+/**
+ * Complete data
+ */
+const photos = data.photoset.photo;
 
-const data = await response.json();
+let completeData: CompleteData[] = [];
+
+for (let i = 0; i < photos.length; i += 1) {
+  const response = await fetch(
+    `https://www.flickr.com/services/rest/?method=flickr.photos.getInfo&api_key=${credentials.app_key}&photo_id=${photos[i].id}&format=json&nojsoncallback=1`
+  );
+  const data = await response.json();
+  completeData.push(data);
+}
 ---
 
-<App client:load data={data} />
+<App client:load data={completeData} />

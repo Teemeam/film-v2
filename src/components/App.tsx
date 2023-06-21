@@ -1,13 +1,14 @@
 import type { FC } from 'react';
 
+/* Prop types */
 type Props = {
-  data: Data;
+  data: CompleteData[];
 };
 
 const App: FC<Props> = ({ data }) => {
   console.log(data);
 
-  return <div>Toimii</div>;
+  return <div>{JSON.stringify(data)}</div>;
 };
 
 export default App;
