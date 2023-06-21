@@ -8,7 +8,11 @@ type Props = {
 const App: FC<Props> = ({ data }) => {
   console.log(data);
 
-  return <div>{JSON.stringify(data)}</div>;
+  return (
+    <div>
+      <p className='text-orange-300'>{JSON.stringify(data)}</p>
+    </div>
+  );
 };
 
 export default App;
