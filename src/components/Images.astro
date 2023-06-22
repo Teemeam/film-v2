@@ -1,0 +1,11 @@
+---
+import { Images as ImagesComponent } from './Images';
+
+const { data } = Astro.props;
+
+/**
+ * Sort and format image data here! Then pass the whole data to ImagesComponent to be filtered.
+ */
+---
+
+<ImagesComponent client:load data={data} />

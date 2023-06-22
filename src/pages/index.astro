@@ -6,7 +6,7 @@ import Layout from '../layouts/Layout.astro';
 
 /* Components */
 import Header from '../components/Header';
-import Images from '../components/Images';
+import Images from '../components/Images.astro';
 
 /**
  * Fetch data
@@ -35,9 +35,9 @@ await Promise.all(
 );
 ---
 
-<Layout>
+<Layout title='FILM-V2'>
   <main>
     <Header />
-    <Images client:load data={completeData} />
+    <Images data={completeData} />
   </main>
 </Layout>

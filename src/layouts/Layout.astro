@@ -1,5 +1,7 @@
 ---
 import '@fontsource-variable/montserrat';
+
+const { title } = Astro.props;
 ---
 
 <!DOCTYPE html>
@@ -12,7 +14,7 @@ import '@fontsource-variable/montserrat';
     <!-- Favicon -->
     <link rel='icon' type='image/svg+xml' href='/favicon.svg' />
 
-    <title>FILM-V2</title>
+    <title>{title}</title>
   </head>
   <body>
     <slot />
