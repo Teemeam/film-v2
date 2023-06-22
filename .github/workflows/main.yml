@@ -10,16 +10,10 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
 
-      - name: Node
-        uses: actions/setup-node@v3
+      - name: Install dependencies and build project
+        uses: withastro/action@v0
         with:
           node-version: '18.x'
-
-      - name: Install dependencies
-        run: npm install
-
-      - name: Build project
-        run: npm run build
 
       - name: Sync
         uses: SamKirkland/FTP-Deploy-Action@4.3.0
