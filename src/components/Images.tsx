@@ -2,7 +2,7 @@ import type { FC } from 'react';
 
 /* Prop types */
 type Props = {
-  data: CompleteData[];
+  data: FormattedData[];
 };
 
 export const Images: FC<Props> = ({ data }) => {

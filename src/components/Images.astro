@@ -6,6 +6,12 @@ const { data } = Astro.props;
 /**
  * Sort and format image data here! Then pass the whole data to ImagesComponent to be filtered.
  */
+
+const formattedData = data.map((dataItem: CompleteData) => {
+  return {
+    url: `https://live.staticflickr.com/${dataItem.photo.server}/${dataItem.photo.id}_${dataItem.photo.originalsecret}_h.jpg`,
+  };
+});
 ---
 
-<ImagesComponent client:load data={data} />
+<ImagesComponent client:load data={formattedData} />
