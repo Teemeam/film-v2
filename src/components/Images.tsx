@@ -5,7 +5,7 @@ type Props = {
   data: CompleteData[];
 };
 
-const App: FC<Props> = ({ data }) => {
+const Images: FC<Props> = ({ data }) => {
   console.log(data);
 
   return (
@@ -15,4 +15,4 @@ const App: FC<Props> = ({ data }) => {
   );
 };
 
-export default App;
+export default Images;

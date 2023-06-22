@@ -1,9 +1,12 @@
 ---
 import credentials from '../lib/credentials';
 
-/* Components */
+/* Layouts */
 import Layout from '../layouts/Layout.astro';
-import Root from '../components/Root.astro';
+
+/* Components */
+import Header from '../components/Header';
+import Images from '../components/Images';
 
 /**
  * Fetch data
@@ -12,11 +15,29 @@ const response = await fetch(
   `https://www.flickr.com/services/rest/?method=flickr.photosets.getPhotos&api_key=${credentials.app_key}&photoset_id=${credentials.photoset_id}&user_id=${credentials.user_id}&format=json&nojsoncallback=1`
 );
 
-const data = await response.json();
+const data: Data = await response.json();
+
+/**
+ * Complete data
+ */
+const photos: Photo[] = data.photoset.photo;
+
+const completeData: CompleteData[] = [];
+
+await Promise.all(
+  photos.map(async (photo: Photo) => {
+    const response = await fetch(
+      `https://www.flickr.com/services/rest/?method=flickr.photos.getInfo&api_key=${credentials.app_key}&photo_id=${photo.id}&format=json&nojsoncallback=1`
+    );
+    const data: CompleteData = await response.json();
+    completeData.push(data);
+  })
+);
 ---
 
 <Layout title='FLICKR ASTRO'>
   <main>
-    <Root data={data} />
+    <Header />
+    <Images client:load data={completeData} />
   </main>
 </Layout>

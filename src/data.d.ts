@@ -1,32 +1,36 @@
-/* Original data */
-interface Data {
+/**
+ * Original data
+ */
+type Data = {
   photoset: Photoset;
-}
+};
 
-interface Photoset {
+type Photoset = {
   id: string;
   photo: Photo[];
-}
+};
 
-interface Photo {
+type Photo = {
   id: string;
   secret: string;
   server: string;
-}
+};
 
-/* Completed data */
-interface CompleteData {
+/**
+ * Complete data
+ */
+type CompleteData = {
   height: number;
   data: Info[];
-}
+};
 
-interface InfoWrapper {
+type InfoWrapper = {
   photo: Info;
   i: number;
   handleImageLoaded: Function;
-}
+};
 
-interface Info {
+type Info = {
   id?: string;
   secret?: string;
   server?: string;
@@ -36,30 +40,30 @@ interface Info {
   dates?: Dates;
   urls?: Urls;
   tags?: Tags;
-}
+};
 
-interface Description {
+type Description = {
   _content: string;
-}
+};
 
-interface Dates {
+type Dates = {
   posted: string;
   taken: string;
-}
+};
 
-interface Urls {
+type Urls = {
   url: Url[];
-}
+};
 
-interface Url {
+type Url = {
   type: string;
   _content: string;
-}
+};
 
-interface Tags {
+type Tags = {
   tag: Tag[];
-}
+};
 
-interface Tag {
+type Tag = {
   _content: string;
-}
+};
