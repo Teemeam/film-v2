@@ -9,7 +9,7 @@ const Images: FC<Props> = ({ data }) => {
   console.log(data);
 
   return (
-    <div>
+    <div className='overflow-hidden'>
       <p className='text-orange-300'>{JSON.stringify(data)}</p>
     </div>
   );
