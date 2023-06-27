@@ -164,4 +164,5 @@ type Url = {
  */
 type FormattedData = {
   url: string;
+  blurhash: string;
 };

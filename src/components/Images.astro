@@ -1,4 +1,5 @@
 ---
+import encodeImage from '../lib/encodeImage';
 import { Images as ImagesComponent } from './Images';
 
 const { data } = Astro.props;
@@ -7,11 +8,19 @@ const { data } = Astro.props;
  * Sort and format image data here! Then pass the whole data to ImagesComponent to be filtered.
  */
 
-const formattedData = data.map((dataItem: CompleteData) => {
-  return {
-    url: `https://live.staticflickr.com/${dataItem.photo.server}/${dataItem.photo.id}_${dataItem.photo.originalsecret}_h.jpg`,
-  };
-});
+const formattedData: FormattedData[] = [];
+
+await Promise.all(
+  data.map(async (dataItem: CompleteData) => {
+    const url = `https://live.staticflickr.com/${dataItem.photo.server}/${dataItem.photo.id}_${dataItem.photo.originalsecret}_h.jpg`;
+    const blurhash = await encodeImage(url);
+
+    formattedData.push({
+      url: url,
+      blurhash: blurhash.encoded,
+    });
+  })
+);
 ---
 
 <ImagesComponent client:load data={formattedData} />
