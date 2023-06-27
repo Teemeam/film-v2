@@ -163,6 +163,8 @@ type Url = {
  * Formatted data
  */
 type FormattedData = {
+  id: string;
   url: string;
   blurhash: string;
+  dateuploaded: string;
 };

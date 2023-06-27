@@ -1,5 +1,8 @@
 ---
 import encodeImage from '../lib/encodeImage';
+import unixToDateString from '../lib/unixToDateString';
+
+/* Components */
 import { Images as ImagesComponent } from './Images';
 
 const { data } = Astro.props;
@@ -12,12 +15,15 @@ const formattedData: FormattedData[] = [];
 
 await Promise.all(
   data.map(async (dataItem: CompleteData) => {
-    const url = `https://live.staticflickr.com/${dataItem.photo.server}/${dataItem.photo.id}_${dataItem.photo.originalsecret}_h.jpg`;
-    const blurhash = await encodeImage(url);
+    const urlBase = `https://live.staticflickr.com/${dataItem.photo.server}/${dataItem.photo.id}_${dataItem.photo.originalsecret}`;
+    const url = `${urlBase}_k.jpg`;
+    const blurhash = await encodeImage(`${urlBase}_t.jpg`);
 
     formattedData.push({
+      id: dataItem.photo.id,
       url: url,
       blurhash: blurhash.encoded,
+      dateuploaded: unixToDateString(dataItem.photo.dateuploaded),
     });
   })
 );
