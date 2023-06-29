@@ -174,6 +174,6 @@ type FormattedData = {
 };
 
 type FormattedDescription = {
-  film: string;
-  camera: string;
+  film: string | undefined;
+  camera: string | undefined;
 }
