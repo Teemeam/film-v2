@@ -166,5 +166,14 @@ type FormattedData = {
   id: string;
   url: string;
   blurhash: string;
+  tags: string[],
+  description: FormattedDescription;
   dateuploaded: string;
+  monthuploaded: string;
+  flickrUrl: string;
 };
+
+type FormattedDescription = {
+  film: string;
+  camera: string;
+}

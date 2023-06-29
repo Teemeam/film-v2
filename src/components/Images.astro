@@ -1,15 +1,13 @@
 ---
 import encodeImage from '../lib/encodeImage';
+import getTags from '../lib/getTags';
+import formatDescription from '../lib/formatDescription';
 import unixToDateString from '../lib/unixToDateString';
 
 /* Components */
 import { Images as ImagesComponent } from './Images';
 
 const { data } = Astro.props;
-
-/**
- * Sort and format image data here! Then pass the whole data to ImagesComponent to be filtered.
- */
 
 const formattedData: FormattedData[] = [];
 
@@ -23,10 +21,19 @@ await Promise.all(
       id: dataItem.photo.id,
       url: url,
       blurhash: blurhash.encoded,
-      dateuploaded: unixToDateString(dataItem.photo.dateuploaded),
+      tags: getTags(dataItem.photo.tags),
+      description: formatDescription(dataItem.photo.description._content),
+      dateuploaded: dataItem.photo.dateuploaded,
+      monthuploaded: unixToDateString(dataItem.photo.dateuploaded),
+      flickrUrl: dataItem.photo.urls.url[0]._content,
     });
   })
 );
+
+/**
+ * Sort formatted data
+ */
+formattedData.sort((a, b) => a.dateuploaded.localeCompare(b.dateuploaded, 'fi-FI'));
 ---
 
 <ImagesComponent client:load data={formattedData} />
