@@ -33,9 +33,9 @@ type Photo = {
 };
 
 /**
- * Complete data
+ * Info data
  */
-type CompleteData = {
+type InfoData = {
   photo: Info;
   stat: string;
 };
@@ -160,20 +160,62 @@ type Url = {
 };
 
 /**
+ * Size data
+ */
+type SizeData = {
+  sizes: Sizes;
+  stat: string;
+};
+
+type Sizes = {
+  canblog: number;
+  canprint: number;
+  candownload: number;
+  size: Size[];
+};
+
+type Size = {
+  label: string;
+  width: number;
+  height: number;
+  source: string;
+  url: string;
+  media: string;
+};
+
+/**
+ * Complete data
+ */
+type CompleteData = {
+  photo: Info;
+  stat: string;
+  width: number | undefined;
+  height: number | undefined;
+};
+
+/**
  * Formatted data
  */
 type FormattedData = {
   id: string;
   url: string;
   blurhash: string;
-  tags: string[],
+  tags: string[];
   description: FormattedDescription;
-  dateuploaded: string;
-  monthuploaded: string;
+  width: number | undefined;
+  height: number | undefined;
+  timestamp: string;
+  dateuploaded: DateUploaded;
   flickrUrl: string;
 };
 
 type FormattedDescription = {
   film: string | undefined;
   camera: string | undefined;
-}
+};
+
+type DateUploaded = {
+  d: number;
+  m: number;
+  y: number;
+};

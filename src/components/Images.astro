@@ -2,7 +2,7 @@
 import encodeImage from '../lib/encodeImage';
 import getTags from '../lib/getTags';
 import formatDescription from '../lib/formatDescription';
-import unixToDateString from '../lib/unixToDateString';
+import timestampToDate from '../lib/timestampToDate';
 
 /* Components */
 import { Images as ImagesComponent } from './Images';
@@ -23,8 +23,10 @@ await Promise.all(
       blurhash: blurhash.encoded,
       tags: getTags(dataItem.photo.tags),
       description: formatDescription(dataItem.photo.description._content),
-      dateuploaded: dataItem.photo.dateuploaded,
-      monthuploaded: unixToDateString(dataItem.photo.dateuploaded),
+      width: dataItem.width,
+      height: dataItem.height,
+      timestamp: dataItem.photo.dateuploaded,
+      dateuploaded: timestampToDate(dataItem.photo.dateuploaded),
       flickrUrl: dataItem.photo.urls.url[0]._content,
     });
   })
@@ -33,7 +35,7 @@ await Promise.all(
 /**
  * Sort formatted data
  */
-formattedData.sort((a, b) => a.dateuploaded.localeCompare(b.dateuploaded, 'fi-FI'));
+formattedData.sort((a, b) => a.timestamp.localeCompare(b.timestamp, 'fi-FI'));
 ---
 
 <ImagesComponent client:load data={formattedData} />

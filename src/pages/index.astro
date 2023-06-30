@@ -1,5 +1,6 @@
 ---
 import credentials from '../lib/credentials';
+import { getOriginalWidth, getOriginalHeight } from '../lib/getOriginalDimensions';
 
 /* Layouts */
 import Layout from '../layouts/Layout.astro';
@@ -7,6 +8,7 @@ import Layout from '../layouts/Layout.astro';
 /* Components */
 import Header from '../components/Header';
 import Images from '../components/Images.astro';
+import Test from '../components/Test';
 
 /**
  * Fetch data
@@ -17,19 +19,39 @@ const response = await fetch(
 
 const data: Data = await response.json();
 
-/**
- * Complete data
- */
 const photos: Photo[] = data.photoset.photo;
 
 const completeData: CompleteData[] = [];
 
 await Promise.all(
   photos.map(async (photo: Photo) => {
-    const response = await fetch(
+    /**
+     * Get info
+     */
+    const infoResponse = await fetch(
       `https://www.flickr.com/services/rest/?method=flickr.photos.getInfo&api_key=${credentials.app_key}&photo_id=${photo.id}&format=json&nojsoncallback=1`
     );
-    const data: CompleteData = await response.json();
+    const infoData: InfoData = await infoResponse.json();
+
+    /**
+     * Get sizes
+     */
+    const sizeResponse = await fetch(
+      `https://www.flickr.com/services/rest/?method=flickr.photos.getSizes&api_key=${credentials.app_key}&photo_id=${photo.id}&format=json&nojsoncallback=1`
+    );
+    const sizeData: SizeData = await sizeResponse.json();
+
+    const sizes: Size[] = sizeData.sizes.size;
+
+    /**
+     * Complete data
+     */
+    const data: CompleteData = {
+      ...infoData,
+      width: getOriginalWidth(sizes),
+      height: getOriginalHeight(sizes),
+    };
+
     completeData.push(data);
   })
 );
@@ -39,5 +61,6 @@ await Promise.all(
   <main>
     <Header />
     <Images data={completeData} />
+    <Test client:load data={completeData} />
   </main>
 </Layout>
