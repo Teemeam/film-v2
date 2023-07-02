@@ -1,5 +1,8 @@
 import type { FC } from 'react';
 
+/* Components */
+import ImageGroup from './ImageGroup';
+
 /* Prop types */
 type Props = {
   data: FormattedData[][];
@@ -8,9 +11,13 @@ type Props = {
 export const Images: FC<Props> = ({ data }) => {
   console.log(data);
 
+  const imageGroups = data.map((groupData, i) => {
+    return <ImageGroup key={`image-group_${i}`} data={groupData} />;
+  });
+
   return (
     <div className='overflow-hidden'>
-      <p className='text-orange-300'>{JSON.stringify(data)}</p>
+      { imageGroups }
     </div>
   );
 };
