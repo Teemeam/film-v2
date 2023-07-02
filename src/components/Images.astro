@@ -3,6 +3,7 @@ import encodeImage from '../lib/encodeImage';
 import getTags from '../lib/getTags';
 import formatDescription from '../lib/formatDescription';
 import timestampToDate from '../lib/timestampToDate';
+import groupDataByMonth from '../lib/groupDataByMonth';
 
 /* Components */
 import { Images as ImagesComponent } from './Images';
@@ -32,9 +33,14 @@ await Promise.all(
 );
 
 /**
- * Sort formatted data
+ * Sort formatted data by timestamp
  */
 formattedData.sort((a, b) => b.timestamp.localeCompare(a.timestamp, 'en-US'));
+
+/**
+ * Group data by date label
+ */
+const groupedData: FormattedData[][] = groupDataByMonth(formattedData);
 ---
 
-<ImagesComponent client:load data={formattedData} />
+<ImagesComponent client:load data={groupedData} />
