@@ -23,10 +23,9 @@ await Promise.all(
       blurhash: blurhash.encoded,
       tags: getTags(dataItem.photo.tags),
       description: formatDescription(dataItem.photo.description._content),
-      width: dataItem.width,
-      height: dataItem.height,
+      aspectRatio: dataItem.aspectRatio,
       timestamp: dataItem.photo.dateuploaded,
-      dateuploaded: timestampToDate(dataItem.photo.dateuploaded),
+      dateLabel: timestampToDate(dataItem.photo.dateuploaded),
       flickrUrl: dataItem.photo.urls.url[0]._content,
     });
   })
@@ -35,7 +34,7 @@ await Promise.all(
 /**
  * Sort formatted data
  */
-formattedData.sort((a, b) => a.timestamp.localeCompare(b.timestamp, 'fi-FI'));
+formattedData.sort((a, b) => b.timestamp.localeCompare(a.timestamp, 'en-US'));
 ---
 
 <ImagesComponent client:load data={formattedData} />

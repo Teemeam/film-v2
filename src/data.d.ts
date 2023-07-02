@@ -189,8 +189,7 @@ type Size = {
 type CompleteData = {
   photo: Info;
   stat: string;
-  width: number | undefined;
-  height: number | undefined;
+  aspectRatio: number;
 };
 
 /**
@@ -202,20 +201,13 @@ type FormattedData = {
   blurhash: string;
   tags: string[];
   description: FormattedDescription;
-  width: number | undefined;
-  height: number | undefined;
+  aspectRatio: number;
   timestamp: string;
-  dateuploaded: DateUploaded;
+  dateLabel: string;
   flickrUrl: string;
 };
 
 type FormattedDescription = {
   film: string | undefined;
   camera: string | undefined;
-};
-
-type DateUploaded = {
-  d: number;
-  m: number;
-  y: number;
 };

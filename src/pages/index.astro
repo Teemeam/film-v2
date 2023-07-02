@@ -26,7 +26,7 @@ const completeData: CompleteData[] = [];
 await Promise.all(
   photos.map(async (photo: Photo) => {
     /**
-     * Get info
+     * Fetch info
      */
     const infoResponse = await fetch(
       `https://www.flickr.com/services/rest/?method=flickr.photos.getInfo&api_key=${credentials.app_key}&photo_id=${photo.id}&format=json&nojsoncallback=1`
@@ -34,7 +34,7 @@ await Promise.all(
     const infoData: InfoData = await infoResponse.json();
 
     /**
-     * Get sizes
+     * Fetch sizes
      */
     const sizeResponse = await fetch(
       `https://www.flickr.com/services/rest/?method=flickr.photos.getSizes&api_key=${credentials.app_key}&photo_id=${photo.id}&format=json&nojsoncallback=1`
@@ -46,10 +46,12 @@ await Promise.all(
     /**
      * Complete data
      */
+    const width = getOriginalWidth(sizes);
+    const height = getOriginalHeight(sizes);
+
     const data: CompleteData = {
       ...infoData,
-      width: getOriginalWidth(sizes),
-      height: getOriginalHeight(sizes),
+      aspectRatio: typeof width === 'number' && typeof height === 'number' ? width / height : 1,
     };
 
     completeData.push(data);
