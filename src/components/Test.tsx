@@ -6,7 +6,7 @@ type Props = {
 };
 
 const Test: FC<Props> = ({ data }) => {
-  console.log(data);
+  // console.log(data);
 
   return null;
 };

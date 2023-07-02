@@ -1,12 +1,14 @@
 import type { FC } from 'react';
 
 /* Prop types */
-type Props = {};
+type Props = {
+  data: FormattedData;
+};
 
-export const Image: FC<Props> = () => {
+export const Image: FC<Props> = ({ data }) => {
   return (
-    <div>
-      <p>Image</p>
+    <div className='overflow-hidden'>
+      <p className='text-orange-300'>{JSON.stringify(data)}</p>
     </div>
   );
 };

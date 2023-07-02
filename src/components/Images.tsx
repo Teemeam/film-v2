@@ -1,4 +1,4 @@
-import type { FC } from 'react';
+import { type FC, useState } from 'react';
 
 /* Components */
 import ImageGroup from './ImageGroup';
@@ -9,14 +9,17 @@ type Props = {
 };
 
 export const Images: FC<Props> = ({ data }) => {
-  console.log(data);
+  const [filteredData, setFilteredData] = useState<FormattedData[][]>(data);
 
-  const imageGroups = data.map((groupData, i) => {
+  /**
+   * Create elements by month
+   */
+  const imageGroups = filteredData.map((groupData, i) => {
     return <ImageGroup key={`image-group_${i}`} data={groupData} />;
   });
 
   return (
-    <div className='overflow-hidden'>
+    <div>
       { imageGroups }
     </div>
   );
