@@ -27,7 +27,7 @@ await Promise.all(
       aspectRatio: dataItem.aspectRatio,
       timestamp: dataItem.photo.dateuploaded,
       dateLabel: timestampToDate(dataItem.photo.dateuploaded),
-      flickrUrl: dataItem.photo.urls.url[0]._content,
+      flickrUrl: dataItem.photo.urls.url[0]!._content,
     });
   })
 );

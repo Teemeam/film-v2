@@ -1,6 +1,7 @@
 ---
 import credentials from '../lib/credentials';
 import { getOriginalWidth, getOriginalHeight } from '../lib/getOriginalDimensions';
+import generateSafelist from '../lib/generateSafelist';
 
 /* Layouts */
 import Layout from '../layouts/Layout.astro';
@@ -57,6 +58,11 @@ await Promise.all(
     completeData.push(data);
   })
 );
+
+/**
+ * Generate safelist from aspect ratios
+ */
+generateSafelist(completeData);
 ---
 
 <Layout title='FILM-V2'>
