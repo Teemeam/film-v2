@@ -23,17 +23,21 @@ const ImageGroup: FC<Props> = ({ data }) => {
     array2.reduce((sum, obj) => sum + obj.aspectRatio, 0)
   ); */
 
-  const column1 = array1.map((image, i) => {
-    return <ImageComponent key={`column-1-image_${i}`} data={image} />;
-  });
+  const column1 = array1
+    ? array1.map((image, i) => {
+        return <ImageComponent key={`column-1-image_${i}`} data={image} />;
+      })
+    : undefined;
 
-  const column2 = array2.map((image, i) => {
-    return <ImageComponent key={`column-2-image_${i}`} data={image} />;
-  });
+  const column2 = array2
+    ? array2.map((image, i) => {
+        return <ImageComponent key={`column-2-image_${i}`} data={image} />;
+      })
+    : undefined;
 
   return (
     <div>
-      <h2>{data[0].dateLabel}</h2>
+      <h2>{data[0]!.dateLabel}</h2>
       <div className='flex flex-row gap-3'>
         <div className='w-2/4'>{column1}</div>
         <div className='w-2/4'>{column2}</div>
