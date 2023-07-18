@@ -12,6 +12,8 @@ const generateSafelist = (data: CompleteData[]): void => {
     .join('\n')}\n];\n\nexport default safelist;\n`;
 
   fs.writeFileSync('safelist.ts', fileContent);
+
+  console.log('Safelist updated!');
 };
 
 export default generateSafelist;
