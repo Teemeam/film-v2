@@ -39,8 +39,8 @@ const ImageGroup: FC<Props> = ({ data }) => {
 
   return (
     <div>
-      <div className='w-full md:w-[calc(50%-6px)] mt-4 mb-2 py-4 bg-rose-800'>
-        <h2 className='font-montserrat font-bold text-base ml-2 text-white'>
+      <div className='w-full md:w-[calc(50%-6px)] mt-4 mb-2 py-4 rounded-t-3xl bg-green-900'>
+        <h2 className='font-montserrat font-bold text-base w-11/12 mx-auto text-center text-white'>
           {data[0]!.dateLabel}
         </h2>
       </div>

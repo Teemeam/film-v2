@@ -10,6 +10,16 @@ module.exports = {
   safelist: safelist,
   theme: {
     extend: {
+      colors: {
+        green: {
+          ...defaultTheme.colors.green,
+          900: '#001E1E',
+        },
+        orange: {
+          ...defaultTheme.colors.orange,
+          900: '#FC6862',
+        },
+      },
       fontFamily: {
         montserrat: ['Montserrat', ...defaultTheme.fontFamily.sans],
       },

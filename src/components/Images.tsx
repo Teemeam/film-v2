@@ -19,7 +19,7 @@ export const Images: FC<Props> = ({ data }) => {
     selected.length > 0
       ? data
           .map((groupData) =>
-            groupData.filter((dataItem) => dataItem.tags.some((tag) => selected.includes(tag)))
+            groupData.filter((dataItem) => selected.every((tag) => dataItem.tags.includes(tag)))
           )
           .filter((groupData) => groupData.length > 0)
       : data;
@@ -42,12 +42,19 @@ export const Images: FC<Props> = ({ data }) => {
     );
   };
 
+  /**
+   * Clear selected
+   */
+  const handleReset = () => {
+    setSelected([]);
+  };
+
   return (
     <div>
       {/**
        * Menu buttons
        */}
-      <Menu selected={selected} handleClick={handleClick} />
+      <Menu selected={selected} handleClick={handleClick} handleReset={handleReset} />
 
       {/**
        * Image groups
