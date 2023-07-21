@@ -6,7 +6,7 @@ type Props = {
   url: string;
 };
 
-export const FullSizeImage: FC<Props> = ({ isInView, url }) => {
+const FullSizeImage: FC<Props> = ({ isInView, url }) => {
   const [opacity, setOpacity] = useState<number>(0);
 
   return (
@@ -21,3 +21,5 @@ export const FullSizeImage: FC<Props> = ({ isInView, url }) => {
     />
   );
 };
+
+export default FullSizeImage;

@@ -6,7 +6,7 @@ type Props = {
   blurhash: string;
 };
 
-export const BlurhashImage: FC<Props> = ({ blurhash }) => {
+const BlurhashImage: FC<Props> = ({ blurhash }) => {
   return (
     <Blurhash
       className='absolute top-0 left-0'
@@ -19,3 +19,5 @@ export const BlurhashImage: FC<Props> = ({ blurhash }) => {
     />
   );
 };
+
+export default BlurhashImage;

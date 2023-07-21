@@ -3,9 +3,9 @@ import { useInView } from 'react-intersection-observer';
 import 'intersection-observer';
 
 /* Components */
-import { BlurhashImage } from './BlurhashImage';
-import { FullSizeImage } from './FullSizeImage';
-import { Caption } from './Caption';
+import BlurhashImage from './BlurhashImage';
+import FullSizeImage from './FullSizeImage';
+// import Caption from './Caption';
 
 /* Prop types */
 type Props = {

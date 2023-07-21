@@ -5,7 +5,7 @@ type Props = {
   description: FormattedDescription;
 };
 
-export const Caption: FC<Props> = ({ description }) => {
+const Caption: FC<Props> = ({ description }) => {
   return (
     <div>
       <p className='font-montserrat font-thin text-sm mb-1'>{description.film}</p>
@@ -13,3 +13,5 @@ export const Caption: FC<Props> = ({ description }) => {
     </div>
   );
 };
+
+export default Caption;
