@@ -18,9 +18,5 @@ export const Images: FC<Props> = ({ data }) => {
     return <ImageGroup key={`image-group_${i}`} data={groupData} />;
   });
 
-  return (
-    <div className='max-w-4xl w-11/12 mx-auto'>
-      { imageGroups }
-    </div>
-  );
+  return <div className='max-w-4xl w-11/12 mx-auto'>{imageGroups}</div>;
 };

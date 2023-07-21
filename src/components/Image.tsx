@@ -47,8 +47,7 @@ export const Image: FC<Props> = ({ data }) => {
 
       {/**
        * Caption
-       */}
-      <Caption description={data.description} />
+      <Caption description={data.description} /> */}
     </div>
   );
 };
