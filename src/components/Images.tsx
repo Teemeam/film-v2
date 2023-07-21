@@ -47,7 +47,7 @@ export const Images: FC<Props> = ({ data }) => {
       {/**
        * Menu buttons
        */}
-      <Menu handleClick={handleClick} />
+      <Menu selected={selected} handleClick={handleClick} />
 
       {/**
        * Image groups

@@ -4,9 +4,11 @@ const getTags = (photoTags: Tags) => {
   const tagArray: string[] = [];
 
   photoTags.tag.map((tag) => {
-    if (tags.some((tagObj) => tagObj.value === tag._content)) {
-      tagArray.push(tag._content);
-    }
+    tags.map((tagGroup) => {
+      if (tagGroup.some((tagObj) => tagObj.value === tag._content)) {
+        tagArray.push(tag._content);
+      }
+    });
   });
 
   return tagArray;
