@@ -32,8 +32,8 @@ export const Image: FC<Props> = ({ data }) => {
   }
 
   return (
-    <div ref={imageRef} className='mb-6'>
-      <div className={`relative h-0 mb-2 pb-[${100 / data.aspectRatio}%]`}>
+    <div ref={imageRef} className='mb-5'>
+      <div className={`relative h-0 pb-[${100 / data.aspectRatio}%]`}>
         {/**
          * Blurhash image
          */}

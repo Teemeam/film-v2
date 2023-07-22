@@ -19,7 +19,8 @@ export const Images: FC<Props> = ({ data }) => {
     selected.length > 0
       ? data
           .map((groupData) =>
-            groupData.filter((dataItem) => selected.every((tag) => dataItem.tags.includes(tag)))
+            groupData.filter((dataItem) => dataItem.tags.some((tag) => selected.includes(tag)))
+            // groupData.filter((dataItem) => selected.every((tag) => dataItem.tags.includes(tag)))
           )
           .filter((groupData) => groupData.length > 0)
       : data;

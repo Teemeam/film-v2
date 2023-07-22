@@ -19,7 +19,7 @@ const Menu: FC<Props> = ({ selected, handleClick, handleReset }) => {
           key={`menu-button_${i}`}
           className={`font-montserrat font-light text-xs sm:text-sm md:text-base m-1 px-5 py-2.5 rounded-3xl ${
             selected.includes(tag.value) ? 'text-white' : 'text-green-900'
-          } ${selected.includes(tag.value) ? 'bg-green-900' : 'bg-neutral-100'}`}
+          } ${selected.includes(tag.value) ? 'bg-green-900' : 'bg-neutral-100 hover:bg-neutral-200'}`}
           aria-pressed={selected.includes(tag.value)}
           onClick={() => handleClick(tag.value)}
         >
@@ -30,7 +30,7 @@ const Menu: FC<Props> = ({ selected, handleClick, handleReset }) => {
   ));
 
   return (
-    <div className='max-w-4xl w-11/12 mx-auto mb-10 text-center'>
+    <div className='max-w-4xl w-11/12 mx-auto mb-5 md:mb-10 text-center'>
       {buttons}
 
       {/**
