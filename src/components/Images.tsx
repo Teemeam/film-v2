@@ -3,7 +3,7 @@ import { type FC, useState } from 'react';
 /* Components */
 import Menu from './Menu';
 import ImageGroup from './ImageGroup';
-import Lightbox from './LightBox';
+// import Lightbox from './Lightbox';
 
 /* Prop types */
 type Props = {
