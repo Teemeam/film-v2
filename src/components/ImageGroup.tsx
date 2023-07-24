@@ -7,10 +7,9 @@ import { Image as ImageComponent } from './Image';
 /* Prop types */
 type Props = {
   data: FormattedData[];
-  handleSelectedImage: (data: FormattedData | null) => void;
 };
 
-const ImageGroup: FC<Props> = ({ data, handleSelectedImage }) => {
+const ImageGroup: FC<Props> = ({ data }) => {
   const [array1, array2] = divideDataByAspectRatio(data);
 
   /**
@@ -18,7 +17,7 @@ const ImageGroup: FC<Props> = ({ data, handleSelectedImage }) => {
    */
   const column1 = array1
     ? array1.map((dataItem, i) => {
-        return <ImageComponent key={`column-1-image_${i}`} data={dataItem} handleSelectedImage={handleSelectedImage} />;
+        return <ImageComponent key={`column-1-image_${i}`} data={dataItem} />;
       })
     : undefined;
 
@@ -27,7 +26,7 @@ const ImageGroup: FC<Props> = ({ data, handleSelectedImage }) => {
    */
   const column2 = array2
     ? array2.map((dataItem, i) => {
-        return <ImageComponent key={`column-2-image_${i}`} data={dataItem} handleSelectedImage={handleSelectedImage} />;
+        return <ImageComponent key={`column-2-image_${i}`} data={dataItem} />;
       })
     : undefined;
 
@@ -35,7 +34,7 @@ const ImageGroup: FC<Props> = ({ data, handleSelectedImage }) => {
    * Images for mobile
    */
   const images = data.map((dataItem, i) => {
-    return <ImageComponent key={`image_${i}`} data={dataItem} handleSelectedImage={handleSelectedImage} />;
+    return <ImageComponent key={`image_${i}`} data={dataItem} />;
   });
 
   return (

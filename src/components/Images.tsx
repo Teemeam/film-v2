@@ -3,7 +3,6 @@ import { type FC, useState } from 'react';
 /* Components */
 import Menu from './Menu';
 import ImageGroup from './ImageGroup';
-// import Lightbox from './Lightbox';
 
 /* Prop types */
 type Props = {
@@ -12,14 +11,6 @@ type Props = {
 
 export const Images: FC<Props> = ({ data }) => {
   const [selected, setSelected] = useState<string[]>([]);
-  const [selectedImage, setSelectedImage] = useState<FormattedData | null>(null);
-
-  /**
-   *
-   */
-  const handleSelectedImage = (data: FormattedData | null) => {
-    setSelectedImage(data);
-  };
 
   /**
    * Filter data
@@ -39,11 +30,7 @@ export const Images: FC<Props> = ({ data }) => {
    * Create elements by month
    */
   const imageGroups = filteredData.map((groupData, i) => (
-    <ImageGroup
-      key={`image-group_${i}`}
-      data={groupData}
-      handleSelectedImage={handleSelectedImage}
-    />
+    <ImageGroup key={`image-group_${i}`} data={groupData} />
   ));
 
   /**
@@ -75,10 +62,6 @@ export const Images: FC<Props> = ({ data }) => {
        * Image groups
        */}
       <div className='max-w-4xl w-11/12 mx-auto'>{imageGroups}</div>
-
-      {/**
-       * Lightbox
-      <Lightbox selectedImage={selectedImage} handleSelectedImage={handleSelectedImage} /> */}
     </div>
   );
 };
