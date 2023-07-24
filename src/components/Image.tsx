@@ -5,14 +5,15 @@ import 'intersection-observer';
 /* Components */
 import BlurhashImage from './BlurhashImage';
 import FullSizeImage from './FullSizeImage';
-// import Caption from './Caption';
+import Caption from './Caption';
 
 /* Prop types */
 type Props = {
   data: FormattedData;
+  handleSelectedImage: (data: FormattedData | null) => void;
 };
 
-export const Image: FC<Props> = ({ data }) => {
+export const Image: FC<Props> = ({ data, handleSelectedImage }) => {
   const [isInView, setIsInView] = useState<boolean>(false);
 
   /**
@@ -32,7 +33,7 @@ export const Image: FC<Props> = ({ data }) => {
   }
 
   return (
-    <div ref={imageRef} className='mb-5'>
+    <div ref={imageRef} className='mb-5' onClick={() => handleSelectedImage(data)}>
       <div className={`relative h-0 pb-[${100 / data.aspectRatio}%]`}>
         {/**
          * Blurhash image
@@ -47,7 +48,8 @@ export const Image: FC<Props> = ({ data }) => {
 
       {/**
        * Caption
-      <Caption description={data.description} /> */}
+       */}
+      <Caption description={data.description} />
     </div>
   );
 };

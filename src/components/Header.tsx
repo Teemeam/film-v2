@@ -1,14 +1,17 @@
 import type { FC } from 'react';
 
+/* Header */
+import header from '../assets/img/header1b.svg';
+
 /* Prop types */
 type Props = {};
 
 const Header: FC<Props> = () => {
   return (
     <div className='w-full'>
-      <div className='max-w-4xl w-10/12 mx-auto'>
-        <h1 className='font-montserrat font-black text-xl md:text-2xl mt-10 md:mt-20 mb-5 md:mb-10 text-center text-green-900'>
-          Teemu Kakko Film Photo Showcase
+      <div className='max-w-xl w-10/12 mx-auto'>
+        <h1 className='mt-10 md:mt-20 mb-8 md:mb-14'>
+          <img className='block w-full' src={header} alt='Teemu Kakko Film Photo Showcase' />
         </h1>
       </div>
     </div>

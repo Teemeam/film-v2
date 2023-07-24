@@ -7,7 +7,7 @@ type Props = {
 
 const Caption: FC<Props> = ({ description }) => {
   return (
-    <div>
+    <div className='mt-2.5'>
       <p className='font-montserrat font-thin text-sm mb-1'>{description.film}</p>
       <p className='font-montserrat font-thin text-sm'>{description.camera}</p>
     </div>
