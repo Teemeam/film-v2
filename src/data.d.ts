@@ -202,7 +202,8 @@ type FormattedData = {
   tags: string[];
   description: FormattedDescription;
   aspectRatio: number;
-  timestamp: string;
+  dateUploaded: string;
+  dateTaken: string;
   dateLabel: string;
   flickrUrl: string;
 };

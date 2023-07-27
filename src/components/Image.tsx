@@ -33,17 +33,24 @@ export const Image: FC<Props> = ({ data }) => {
 
   return (
     <div ref={imageRef} className='mb-5'>
-      <div className={`relative h-0 pb-[${100 / data.aspectRatio}%]`}>
-        {/**
-         * Blurhash image
-         */}
-        <BlurhashImage blurhash={data.blurhash} />
+      <a
+        href={data.flickrUrl}
+        target='_blank'
+        rel='noopener noreferrer'
+        aria-label='Open image on Flickr.'
+      >
+        <div className={`relative h-0 pb-[${100 / data.aspectRatio}%]`}>
+          {/**
+           * Blurhash image
+           */}
+          <BlurhashImage blurhash={data.blurhash} />
 
-        {/**
-         * Full-size image
-         */}
-        <FullSizeImage isInView={isInView} url={data.url} />
-      </div>
+          {/**
+           * Full-size image
+           */}
+          <FullSizeImage isInView={isInView} url={data.url} />
+        </div>
+      </a>
 
       {/**
        * Caption

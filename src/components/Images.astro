@@ -25,8 +25,11 @@ await Promise.all(
       tags: getTags(dataItem.photo.tags),
       description: formatDescription(dataItem.photo.description._content),
       aspectRatio: dataItem.aspectRatio,
-      timestamp: dataItem.photo.dateuploaded,
-      dateLabel: timestampToDate(dataItem.photo.dateuploaded),
+      dateUploaded: dataItem.photo.dateuploaded,
+      dateTaken: dataItem.photo.dates.taken,
+      dateLabel: dataItem.photo.dates.taken.includes('00:00:00')
+        ? timestampToDate(dataItem.photo.dateuploaded, false)
+        : timestampToDate(dataItem.photo.dates.taken, true),
       flickrUrl: dataItem.photo.urls.url[0]!._content,
     });
   })
@@ -35,7 +38,7 @@ await Promise.all(
 /**
  * Sort formatted data by timestamp
  */
-formattedData.sort((a, b) => b.timestamp.localeCompare(a.timestamp, 'en-US'));
+formattedData.sort((a, b) => b.dateTaken.localeCompare(a.dateTaken, 'en-US'));
 
 /**
  * Group data by date label

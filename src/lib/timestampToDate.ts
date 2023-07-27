@@ -1,5 +1,5 @@
-const timestampToDate = (timestamp: string): string => {
-  const date = new Date(parseInt(timestamp, 10) * 1000);
+const timestampToDate = (timestamp: string, iso: boolean): string => {
+  const date = iso ? new Date(timestamp) : new Date(parseInt(timestamp, 10) * 1000);
 
   const options = {
     year: 'numeric' as const,
