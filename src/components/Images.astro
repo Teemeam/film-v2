@@ -3,6 +3,7 @@ import encodeImage from '../lib/encodeImage';
 import getTags from '../lib/getTags';
 import formatDescription from '../lib/formatDescription';
 import timestampToDate from '../lib/timestampToDate';
+import dateToLocaleString from '../lib/dateToLocaleString';
 import groupDataByMonth from '../lib/groupDataByMonth';
 
 /* Components */
@@ -27,18 +28,21 @@ await Promise.all(
       aspectRatio: dataItem.aspectRatio,
       dateUploaded: dataItem.photo.dateuploaded,
       dateTaken: dataItem.photo.dates.taken,
-      dateLabel: dataItem.photo.dates.taken.includes('00:00:00')
+      date: dataItem.photo.dates.taken.includes('-01-01 00:00:00') // Taken Jan 1 at 00:00
         ? timestampToDate(dataItem.photo.dateuploaded, false)
         : timestampToDate(dataItem.photo.dates.taken, true),
+      dateLabel: dataItem.photo.dates.taken.includes('-01-01 00:00:00')
+        ? dateToLocaleString(timestampToDate(dataItem.photo.dateuploaded, false))
+        : dateToLocaleString(timestampToDate(dataItem.photo.dates.taken, true)),
       flickrUrl: dataItem.photo.urls.url[0]!._content,
     });
   })
 );
 
 /**
- * Sort formatted data by timestamp
+ * Sort formatted data by date
  */
-formattedData.sort((a, b) => b.dateTaken.localeCompare(a.dateTaken, 'en-US'));
+formattedData.sort((a, b) => b.date.getTime() - a.date.getTime());
 
 /**
  * Group data by date label

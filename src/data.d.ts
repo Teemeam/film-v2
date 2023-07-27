@@ -204,6 +204,7 @@ type FormattedData = {
   aspectRatio: number;
   dateUploaded: string;
   dateTaken: string;
+  date: Date;
   dateLabel: string;
   flickrUrl: string;
 };

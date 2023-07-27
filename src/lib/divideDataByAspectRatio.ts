@@ -8,13 +8,16 @@ const divideDataByAspectRatio = (data: FormattedData[]) => {
   let sum1 = 0;
   let sum2 = 0;
 
-  sortedArray.map((dataItem) => {
-    if (sum1 <= sum2) {
+  sortedArray.map((dataItem, i) => {
+    if (i === sortedArray.length - 2 && sum1 < sum2 + 1 / dataItem.aspectRatio) {
       array1.push(dataItem);
-      sum1 += dataItem.aspectRatio;
+      sum1 += 1 / dataItem.aspectRatio;
+    } else if (sum1 <= sum2) {
+      array1.push(dataItem);
+      sum1 += 1 / dataItem.aspectRatio;
     } else {
       array2.push(dataItem);
-      sum2 += dataItem.aspectRatio;
+      sum2 += 1 / dataItem.aspectRatio;
     }
   });
 
