@@ -8,8 +8,8 @@ type Props = {
 const Caption: FC<Props> = ({ description }) => {
   return (
     <div className='mt-2.5'>
-      <p className='font-montserrat font-thin text-sm mb-1'>{description.film}</p>
-      <p className='font-montserrat font-thin text-sm'>{description.camera}</p>
+      <p className='mb-1 font-montserrat text-sm font-thin'>{description.film}</p>
+      <p className='font-montserrat text-sm font-thin'>{description.camera}</p>
     </div>
   );
 };

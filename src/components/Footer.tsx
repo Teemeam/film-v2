@@ -8,8 +8,8 @@ const Footer: FC<Props> = () => {
   const year = today.getFullYear();
 
   return (
-    <div className='w-11/12 mx-auto'>
-      <p className='font-montserrat font-thin text-xs text-center my-10 text-neutral-300'>
+    <div className='mx-auto w-11/12'>
+      <p className='my-10 text-center font-montserrat text-xs font-thin text-neutral-300'>
         <a href='https://kakkoteemu.fi/' target='_blank' rel='noopener noreferrer'>
           &copy; {year}
         </a>

@@ -61,7 +61,7 @@ export const Images: FC<Props> = ({ data }) => {
       {/**
        * Image groups
        */}
-      <div className='max-w-4xl w-11/12 mx-auto'>{imageGroups}</div>
+      <div className='mx-auto w-11/12 max-w-4xl'>{imageGroups}</div>
     </div>
   );
 };

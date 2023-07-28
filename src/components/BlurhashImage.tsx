@@ -9,7 +9,7 @@ type Props = {
 const BlurhashImage: FC<Props> = ({ blurhash }) => {
   return (
     <Blurhash
-      className='absolute top-0 left-0'
+      className='absolute left-0 top-0'
       hash={blurhash}
       width={'100%'}
       height={'100%'}

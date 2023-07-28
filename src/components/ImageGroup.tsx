@@ -39,8 +39,8 @@ const ImageGroup: FC<Props> = ({ data }) => {
 
   return (
     <div>
-      <div className='w-full md:w-[calc(50%-6px)] mb-2.5 py-4 rounded-t-3xl bg-green-900'>
-        <h2 className='font-montserrat font-bold text-base w-11/12 mx-auto text-center text-white'>
+      <div className='mb-2.5 w-full rounded-t-3xl bg-green-900 py-4 md:mb-3 md:w-[calc(50%-6px)]'>
+        <h2 className='mx-auto w-11/12 text-center font-montserrat text-base font-bold text-white'>
           {data[0]!.dateLabel}
         </h2>
       </div>
@@ -48,7 +48,7 @@ const ImageGroup: FC<Props> = ({ data }) => {
       {/**
        * Desktop
        */}
-      <div className='hidden md:flex flex-row gap-3'>
+      <div className='hidden flex-row gap-3 md:flex'>
         <div className='w-2/4'>{column1}</div>
         <div className='w-2/4'>{column2}</div>
       </div>
@@ -56,7 +56,7 @@ const ImageGroup: FC<Props> = ({ data }) => {
       {/**
        * Mobile
        */}
-      <div className='block md:hidden relative w-full'>{images}</div>
+      <div className='relative block w-full md:hidden'>{images}</div>
     </div>
   );
 };
