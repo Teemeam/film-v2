@@ -1,6 +1,10 @@
 const tags = [
   [
     {
+      label: 'Cinestill 50D',
+      value: '50d',
+    },
+    {
       label: 'Cinestill 800T',
       value: '800t',
     },
@@ -16,6 +20,10 @@ const tags = [
       label: 'Fujifilm Fujicolor Pro 400H',
       value: '400h',
     },
+        {
+      label: 'Ilford FP4 Plus 125',
+      value: 'fp4plus',
+    },
     {
       label: 'Ilford HP5 Plus 400',
       value: 'hp5plus',
@@ -27,6 +35,10 @@ const tags = [
     {
       label: 'Kodak Ektar',
       value: 'ektar',
+    },
+    {
+      label: 'Kodak Portra 160',
+      value: 'portra160',
     },
     {
       label: 'Kodak Portra 400',
@@ -47,6 +59,10 @@ const tags = [
     {
       label: 'Kodak T-Max P3200',
       value: 'p3200',
+    },
+    {
+      label: 'Kodak Ultramax 400',
+      value: 'ultramax',
     },
     {
       label: 'One Instant Packfilm Type 100 P7 Color',
