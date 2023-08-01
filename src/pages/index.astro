@@ -1,7 +1,7 @@
 ---
 import credentials from '../lib/credentials';
 import { getOriginalWidth, getOriginalHeight } from '../lib/getOriginalDimensions';
-import generateSafelist from '../lib/generateSafelist';
+// import generateSafelist from '../lib/generateSafelist';
 
 /* Layouts */
 import Layout from '../layouts/Layout.astro';
@@ -62,8 +62,7 @@ await Promise.all(
 
 /**
  * Generate safelist from aspect ratios
- */
-generateSafelist(completeData);
+generateSafelist(completeData); */
 ---
 
 <Layout title='Teemu Kakko Film Photo Showcase'>

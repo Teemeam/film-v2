@@ -4,7 +4,7 @@ const generateSafelist = (data: CompleteData[]): void => {
   const sortedData = data.sort((a, b) => b.aspectRatio - a.aspectRatio);
 
   const safeList = Array.from(
-    new Set(sortedData.map((dataItem) => `pb-[${100 / dataItem.aspectRatio}%]`))
+    new Set(sortedData.map((dataItem) => `pb-[${(100 / dataItem.aspectRatio).toFixed(1)}%]`))
   );
 
   const fileContent = `const safelist = [\n${safeList

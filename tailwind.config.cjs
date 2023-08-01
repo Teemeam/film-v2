@@ -1,13 +1,11 @@
 /** @type {import('tailwindcss').Config} */
 const defaultTheme = require('tailwindcss/defaultTheme');
 
-import safelist from './safelist';
-
 module.exports = {
   content: ['./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}'],
   important: true,
   plugins: [],
-  safelist: safelist,
+  safelist: [...[...Array(2000).keys()].flatMap((i) => [`pb-[${((i + 1) * 0.1).toFixed(1)}%]`])],
   theme: {
     extend: {
       colors: {
