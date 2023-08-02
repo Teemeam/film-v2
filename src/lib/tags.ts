@@ -1,92 +1,114 @@
 const tags = [
   [
     {
+      name: 'Cinestill 50D',
       label: 'Cinestill 50D',
       value: '50d',
     },
     {
+      name: 'Cinestill 800T',
       label: 'Cinestill 800T',
       value: '800t',
     },
     {
-      label: 'Foma Fomapan 100',
-      value: 'fomapan100',
-    },
-    {
-      label: 'Fujifilm Fujicolor C200',
-      value: 'c200',
-    },
-    {
-      label: 'Fujifilm Fujicolor Pro 400H',
-      value: '400h',
-    },
-        {
-      label: 'Ilford FP4 Plus 125',
-      value: 'fp4plus',
-    },
-    {
-      label: 'Ilford HP5 Plus 400',
-      value: 'hp5plus',
-    },
-    {
-      label: 'Kodak ColorPlus 200',
+      name: 'Kodak ColorPlus 200',
+      label: 'ColorPlus 200',
       value: 'colorplus200',
     },
     {
-      label: 'Kodak Ektar',
+      name: 'Kodak Ektar',
+      label: 'Ektar',
       value: 'ektar',
     },
     {
-      label: 'Kodak Portra 160',
+      name: 'Foma Fomapan 100',
+      label: 'Fomapan 100',
+      value: 'fomapan100',
+    },
+    {
+      name: 'Ilford FP4 Plus 125',
+      label: 'FP4 Plus 125',
+      value: 'fp4plus',
+    },
+    {
+      name: 'Fujifilm Fujicolor C200',
+      label: 'Fujicolor C200',
+      value: 'c200',
+    },
+    {
+      name: 'Fujifilm Fujicolor Pro 400H',
+      label: 'Fujicolor Pro 400H',
+      value: '400h',
+    },
+    {
+      name: 'Ilford HP5 Plus 400',
+      label: 'HP5 Plus 400',
+      value: 'hp5plus',
+    },
+    {
+      name: 'One Instant Packfilm Type 100 P7 Color',
+      label: 'One Instant Type 100 P7 Color',
+      value: 'oneinstant',
+    },
+    {
+      name: 'Kodak Portra 160',
+      label: 'Portra 160',
       value: 'portra160',
     },
     {
-      label: 'Kodak Portra 400',
+      name: 'Kodak Portra 400',
+      label: 'Portra 400',
       value: 'portra400',
     },
     {
-      label: 'Kodak Portra 800',
+      name: 'Kodak Portra 800',
+      label: 'Portra 800',
       value: 'portra800',
     },
     {
-      label: 'Kodak T-Max 100',
+      name: 'Kodak T-Max 100',
+      label: 'T-Max 100',
       value: 'tmax100',
     },
     {
-      label: 'Kodak T-Max 400',
+      name: 'Kodak T-Max 400',
+      label: 'T-Max 400',
       value: 'tmax400',
     },
     {
-      label: 'Kodak T-Max P3200',
+      name: 'Kodak T-Max P3200',
+      label: 'T-Max P3200',
       value: 'p3200',
     },
     {
-      label: 'Kodak Ultramax 400',
+      name: 'Kodak Ultramax 400',
+      label: 'Ultramax 400',
       value: 'ultramax',
-    },
-    {
-      label: 'One Instant Packfilm Type 100 P7 Color',
-      value: 'oneinstant',
     },
   ],
   [
     {
+      name: 'Agfa Synchro Box',
       label: 'Agfa Synchro Box',
       value: 'synchrobox',
     },
     {
+      name: 'Canon AV-1',
       label: 'Canon AV-1',
       value: 'av1',
     },
     {
-      label: 'Kodak Brownie No. 2 Cartridge Hawk-Eye Model B',
+      name: 'Kodak Brownie No. 2 Cartridge Hawk-Eye Model B',
+      label: 'Kodak No. 2 Cartridge Hawk-Eye Model B',
       value: 'brownie',
     },
     {
+      name: 'Kodak VR35 K4a',
       label: 'Kodak VR35 K4a',
       value: 'vr35',
     },
     {
+      name: 'Polaroid SX-70',
       label: 'Polaroid SX-70',
       value: 'sx70',
     },

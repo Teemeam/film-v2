@@ -19,6 +19,10 @@ await Promise.all(
     const url = `${urlBase}_k.jpg`;
     const blurhash = await encodeImage(`${urlBase}_t.jpg`);
 
+    const date = dataItem.photo.dates.taken.includes('-01-01 00:00:00') // Taken Jan 1 at 00:00
+      ? timestampToDate(dataItem.photo.dateuploaded, false)
+      : timestampToDate(dataItem.photo.dates.taken, true);
+
     formattedData.push({
       id: dataItem.photo.id,
       url: url,
@@ -26,14 +30,8 @@ await Promise.all(
       tags: getTags(dataItem.photo.tags),
       description: formatDescription(dataItem.photo.description._content),
       aspectRatio: dataItem.aspectRatio,
-      dateUploaded: dataItem.photo.dateuploaded,
-      dateTaken: dataItem.photo.dates.taken,
-      date: dataItem.photo.dates.taken.includes('-01-01 00:00:00') // Taken Jan 1 at 00:00
-        ? timestampToDate(dataItem.photo.dateuploaded, false)
-        : timestampToDate(dataItem.photo.dates.taken, true),
-      dateLabel: dataItem.photo.dates.taken.includes('-01-01 00:00:00')
-        ? dateToLocaleString(timestampToDate(dataItem.photo.dateuploaded, false))
-        : dateToLocaleString(timestampToDate(dataItem.photo.dates.taken, true)),
+      date: date,
+      dateLabel: dateToLocaleString(date),
       flickrUrl: dataItem.photo.urls.url[0]!._content,
     });
   })

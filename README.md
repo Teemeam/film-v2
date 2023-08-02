@@ -40,3 +40,5 @@ Build project.
 ## Deploy
 
 GitHub workflow handles deploying automatically when pushed. Store your credentials in repository secrets.
+
+Additionally, the workflow is scheduled to run every night at 00:00.
