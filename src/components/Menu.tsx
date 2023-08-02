@@ -14,11 +14,14 @@ const Menu: FC<Props> = ({ selected, handleClick, handleReset }) => {
   /**
    * Create buttons
    */
-  const buttons = tags.map((tagGroup, i) => (
-    <div key={`menu-group_${i}`} className={`${i === 1 && !showCameras ? 'hidden' : 'block'}`}>
-      {tagGroup.map((tag, i) => (
+  const buttons = tags.map((tagGroup, groupIndex) => (
+    <div
+      key={`menu-group_${groupIndex}`}
+      className={`${groupIndex === 1 && !showCameras ? 'hidden' : 'block'}`}
+    >
+      {tagGroup.map((tag, tagIndex) => (
         <button
-          key={`menu-button_${i}`}
+          key={`menu-button_${tagIndex}`}
           className={`m-1 rounded-3xl px-5 py-2.5 font-montserrat text-xs font-light sm:text-sm md:text-base ${
             selected.includes(tag.value) ? 'text-white' : 'text-green-900'
           } ${
@@ -35,6 +38,9 @@ const Menu: FC<Props> = ({ selected, handleClick, handleReset }) => {
 
   return (
     <div className='mx-auto mb-5 w-11/12 max-w-4xl text-center md:mb-10'>
+      {/**
+       * Buttons
+       */}
       {buttons}
 
       {/**
@@ -42,7 +48,7 @@ const Menu: FC<Props> = ({ selected, handleClick, handleReset }) => {
        */}
       <div>
         <button
-          className='m-1 rounded-3xl px-5 py-2.5 font-montserrat text-xs font-light text-green-900 underline sm:text-sm md:text-base'
+          className='m-1 px-5 py-2.5 font-montserrat text-xs font-light text-green-900 underline sm:text-sm md:text-base'
           onClick={() => setShowCameras(!showCameras)}
         >
           {showCameras ? <span>Hide cameras &#9650;</span> : <span>Show cameras &#9660;</span>}
@@ -54,7 +60,7 @@ const Menu: FC<Props> = ({ selected, handleClick, handleReset }) => {
        */}
       <div>
         <button
-          className='m-1 rounded-3xl px-5 py-2.5 font-montserrat text-xs font-light text-green-900 underline sm:text-sm md:text-base'
+          className='m-1 px-5 py-2.5 font-montserrat text-xs font-light text-green-900 underline sm:text-sm md:text-base'
           onClick={() => handleReset()}
         >
           Reset

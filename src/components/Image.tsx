@@ -39,7 +39,7 @@ export const Image: FC<Props> = ({ data }) => {
         rel='noopener noreferrer'
         aria-label='Open image on Flickr.'
       >
-        <div className={`relative h-0 pb-[${(100 / data.aspectRatio).toFixed(1)}%]`}>
+        <div className={`relative h-0 pb-[${(100 / data.aspectRatio).toFixed(1)}%] bg-neutral-100`}>
           {/**
            * Blurhash image
            */}
