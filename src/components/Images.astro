@@ -16,7 +16,6 @@ const formattedData: FormattedData[] = [];
 await Promise.all(
   data.map(async (dataItem: CompleteData) => {
     const urlBase = `https://live.staticflickr.com/${dataItem.photo.server}/${dataItem.photo.id}_${dataItem.photo.originalsecret}`;
-    const url = `${urlBase}_k.jpg`;
     const blurhash = await encodeImage(`${urlBase}_t.jpg`);
 
     const date = dataItem.photo.dates.taken.includes('-01-01 00:00:00') // Taken Jan 1 at 00:00
@@ -25,7 +24,7 @@ await Promise.all(
 
     formattedData.push({
       id: dataItem.photo.id,
-      url: url,
+      urlBase: urlBase,
       blurhash: blurhash.encoded,
       tags: getTags(dataItem.photo.tags),
       description: formatDescription(dataItem.photo.description._content),

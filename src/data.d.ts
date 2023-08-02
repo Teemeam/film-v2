@@ -197,7 +197,7 @@ type CompleteData = {
  */
 type FormattedData = {
   id: string;
-  url: string;
+  urlBase: string;
   blurhash: string;
   tags: string[];
   description: FormattedDescription;

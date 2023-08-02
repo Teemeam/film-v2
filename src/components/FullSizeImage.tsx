@@ -11,9 +11,9 @@ const FullSizeImage: FC<Props> = ({ isInView, url }) => {
 
   return (
     <img
-      className={`w-100 h-100 absolute left-0 top-0 block object-cover object-center ${
+      className={`w-100 h-100 absolute left-0 top-0 block object-cover object-center transition-opacity duration-500 ${
         opacity === 1 ? 'opacity-100' : 'opacity-0'
-      } transition-opacity duration-500`}
+      }`}
       src={isInView ? url : undefined}
       alt=''
       onLoad={() => setOpacity(1)}

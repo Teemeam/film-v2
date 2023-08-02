@@ -39,7 +39,7 @@ export const Image: FC<Props> = ({ data }) => {
         rel='noopener noreferrer'
         aria-label='Open image on Flickr.'
       >
-        <div className={`relative h-0 pb-[${(100 / data.aspectRatio).toFixed(1)}%] bg-neutral-100`}>
+        <div className={`relative h-0 bg-neutral-100 pb-[${(100 / data.aspectRatio).toFixed(1)}%]`}>
           {/**
            * Blurhash image
            */}
@@ -48,7 +48,21 @@ export const Image: FC<Props> = ({ data }) => {
           {/**
            * Full-size image
            */}
-          <FullSizeImage isInView={isInView} url={data.url} />
+
+          {/* 768px - */}
+          <div className='hidden md:block'>
+            <FullSizeImage isInView={isInView} url={`${data.urlBase}_k.jpg`} />
+          </div>
+
+          {/* 640px - 767px */}
+          <div className='hidden sm:block md:hidden'>
+            <FullSizeImage isInView={isInView} url={`${data.urlBase}_h.jpg`} />
+          </div>
+
+          {/* - 639px */}
+          <div className='block sm:hidden md:hidden'>
+            <FullSizeImage isInView={isInView} url={`${data.urlBase}_b.jpg`} />
+          </div>
         </div>
       </a>
 
