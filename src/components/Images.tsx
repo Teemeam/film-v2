@@ -1,4 +1,4 @@
-import { type FC, useState } from 'react';
+import { type FC, useState, useEffect } from 'react';
 
 /* Components */
 import Menu from './Menu';
@@ -10,7 +10,22 @@ type Props = {
 };
 
 export const Images: FC<Props> = ({ data }) => {
+  const [width, setWidth] = useState<number>(window.innerWidth);
   const [selected, setSelected] = useState<string[]>([]);
+
+  /**
+   * Update window width
+   */
+  useEffect(() => {
+    const updateWidth = () => {
+      setWidth(window.innerWidth);
+    };
+    window.addEventListener('resize', updateWidth);
+
+    return () => {
+      window.removeEventListener('resize', updateWidth);
+    };
+  }, []);
 
   /**
    * Filter data
@@ -30,7 +45,7 @@ export const Images: FC<Props> = ({ data }) => {
    * Create elements by month
    */
   const imageGroups = filteredData.map((groupData, i) => (
-    <ImageGroup key={`image-group_${i}`} data={groupData} />
+    <ImageGroup key={`image-group_${i}`} width={width} data={groupData} />
   ));
 
   /**

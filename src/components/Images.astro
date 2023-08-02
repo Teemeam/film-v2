@@ -47,4 +47,4 @@ formattedData.sort((a, b) => b.date.getTime() - a.date.getTime());
 const groupedData: FormattedData[][] = groupDataByMonth(formattedData);
 ---
 
-<ImagesComponent client:load data={groupedData} />
+<ImagesComponent client:only data={groupedData} />

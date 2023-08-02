@@ -9,10 +9,11 @@ import Caption from './Caption';
 
 /* Prop types */
 type Props = {
+  width: number;
   data: FormattedData;
 };
 
-export const Image: FC<Props> = ({ data }) => {
+export const Image: FC<Props> = ({ width, data }) => {
   const [isInView, setIsInView] = useState<boolean>(false);
 
   /**
@@ -48,21 +49,10 @@ export const Image: FC<Props> = ({ data }) => {
           {/**
            * Full-size image
            */}
-
-          {/* 768px - */}
-          <div className='hidden md:block'>
-            <FullSizeImage isInView={isInView} url={`${data.urlBase}_k.jpg`} />
-          </div>
-
-          {/* 640px - 767px */}
-          <div className='hidden sm:block md:hidden'>
-            <FullSizeImage isInView={isInView} url={`${data.urlBase}_h.jpg`} />
-          </div>
-
-          {/* - 639px */}
-          <div className='block sm:hidden md:hidden'>
-            <FullSizeImage isInView={isInView} url={`${data.urlBase}_b.jpg`} />
-          </div>
+          <FullSizeImage
+            isInView={isInView}
+            url={`${data.urlBase}_${width > 767 ? 'h' : 'b'}.jpg`}
+          />
         </div>
       </a>
 
