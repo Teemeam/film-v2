@@ -1,4 +1,6 @@
-import { type FC, useState, useEffect } from 'react';
+import { type FC, useState } from 'react';
+import { useInView } from 'react-intersection-observer';
+import 'intersection-observer';
 
 /* Components */
 import Menu from './Menu';
@@ -10,22 +12,30 @@ type Props = {
 };
 
 export const Images: FC<Props> = ({ data }) => {
-  const [width, setWidth] = useState<number>(window.innerWidth);
   const [selected, setSelected] = useState<string[]>([]);
+  const [renderBuffer, setRenderBuffer] = useState<number>(5);
+  const [isInView, setIsInView] = useState<boolean>(false);
 
   /**
-   * Update window width
+   * Determine if loading text is in the viewport
    */
-  useEffect(() => {
-    const updateWidth = () => {
-      setWidth(window.innerWidth);
-    };
-    window.addEventListener('resize', updateWidth);
+  const [loadingRef, inView] = useInView({
+    threshold: 0,
+  });
 
-    return () => {
-      window.removeEventListener('resize', updateWidth);
-    };
-  }, []);
+  /**
+   * Increase the render buffer if needed
+   */
+  if (inView !== isInView) {
+    if (inView) {
+      if (renderBuffer < data.length) {
+        setRenderBuffer(renderBuffer + 10);
+      }
+      setIsInView(true);
+    } else {
+      setIsInView(false);
+    }
+  }
 
   /**
    * Filter data
@@ -44,9 +54,9 @@ export const Images: FC<Props> = ({ data }) => {
   /**
    * Create elements by month
    */
-  const imageGroups = filteredData.map((groupData, i) => (
-    <ImageGroup key={`image-group_${i}`} width={width} data={groupData} />
-  ));
+  const imageGroups = filteredData
+    .map((groupData, i) => <ImageGroup key={`image-group_${i}`} data={groupData} />)
+    .slice(0, renderBuffer);
 
   /**
    * Handle menu button click
@@ -77,6 +87,18 @@ export const Images: FC<Props> = ({ data }) => {
        * Image groups
        */}
       <div className='mx-auto w-11/12 max-w-4xl'>{imageGroups}</div>
+
+      {/**
+       * Loading text
+       */}
+      <p
+        ref={loadingRef}
+        className={`mx-auto w-11/12 max-w-4xl text-center font-montserrat text-sm font-thin ${
+          renderBuffer >= data.length ? 'hidden' : 'block'
+        }`}
+      >
+        Loading...
+      </p>
     </div>
   );
 };
