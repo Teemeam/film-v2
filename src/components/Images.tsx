@@ -5,7 +5,6 @@ import 'intersection-observer';
 /* Components */
 import Menu from './Menu';
 import ImageGroup from './ImageGroup';
-import LoadingText from './LoadingText';
 
 /* Prop types */
 type Props = {
@@ -92,12 +91,14 @@ export const Images: FC<Props> = ({ data }) => {
       {/**
        * Loading text
        */}
-      <div
+      <p
         ref={loadingRef}
-        className={`${renderBuffer >= filteredData.length ? 'hidden' : 'block'}`}
+        className={`mx-auto w-11/12 max-w-4xl text-center font-montserrat text-sm font-thin ${
+          renderBuffer >= filteredData.length ? 'hidden' : 'block'
+        }`}
       >
-        <LoadingText />
-      </div>
+        Loading...
+      </p>
     </div>
   );
 };
