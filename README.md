@@ -1,5 +1,7 @@
 # Film Photo Showcase 2.0
 
+[![Scheduled deploy](https://github.com/Teemeam/film-v2/actions/workflows/main.yml/badge.svg?event=schedule)](https://github.com/Teemeam/film-v2/actions/workflows/main.yml)
+
 Fetch photos from the Flickr API.
 
 ![](sketch.svg)
