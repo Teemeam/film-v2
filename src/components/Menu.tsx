@@ -1,5 +1,8 @@
-import { type FC, useState } from 'react';
+import type { FC } from 'react';
 import tags from '../lib/tags';
+
+/* Components */
+import MenuButton from './MenuButton';
 
 /* Prop types */
 type Props = {
@@ -9,50 +12,41 @@ type Props = {
 };
 
 const Menu: FC<Props> = ({ selected, handleClick, handleReset }) => {
-  const [showCameras, setShowCameras] = useState<boolean>(false);
-
-  /**
-   * Create buttons
-   */
-  const buttons = tags.map((tagGroup, groupIndex) => (
-    <div
-      key={`menu-group_${groupIndex}`}
-      className={`${groupIndex === 1 && !showCameras ? 'hidden' : 'block'}`}
-    >
-      {tagGroup.map((tag, tagIndex) => (
-        <button
-          key={`menu-button_${tagIndex}`}
-          className={`m-1 rounded-3xl px-5 py-2.5 font-montserrat text-xs font-light sm:text-sm md:text-base ${
-            selected.includes(tag.value) ? 'text-white' : 'text-green-900'
-          } ${
-            selected.includes(tag.value) ? 'bg-green-900' : 'bg-neutral-100 hover:bg-neutral-200'
-          }`}
-          aria-pressed={selected.includes(tag.value)}
-          onClick={() => handleClick(tag.value)}
-        >
-          {tag.label}
-        </button>
-      ))}
-    </div>
-  ));
-
   return (
     <div className='mx-auto mb-5 w-11/12 max-w-4xl text-center md:mb-10'>
       {/**
-       * Buttons
-       */}
-      {buttons}
-
-      {/**
-       * Show cameras button
+       * Film buttons
        */}
       <div>
-        <button
-          className='m-1 px-5 py-2.5 font-montserrat text-xs font-light text-green-900 underline sm:text-sm md:text-base'
-          onClick={() => setShowCameras(!showCameras)}
-        >
-          {showCameras ? <span>Hide cameras &#9650;</span> : <span>Show cameras &#9660;</span>}
-        </button>
+        {tags[0]?.map((tag, i) => (
+          <MenuButton
+            key={`f-button_${i}`}
+            tag={tag}
+            isPressed={selected.includes(tag.value)}
+            handleClick={handleClick}
+          />
+        ))}
+      </div>
+
+      {/**
+       * Camera buttons
+       */}
+      <div>
+        <details>
+          <summary className='mx-auto my-1 max-w-xs cursor-pointer px-5 py-2.5 font-montserrat text-xs font-bold text-green-900 sm:text-sm md:text-base'>
+            Cameras
+          </summary>
+          <div>
+            {tags[1]?.map((tag, i) => (
+              <MenuButton
+                key={`c-button_${i}`}
+                tag={tag}
+                isPressed={selected.includes(tag.value)}
+                handleClick={handleClick}
+              />
+            ))}
+          </div>
+        </details>
       </div>
 
       {/**
@@ -60,7 +54,7 @@ const Menu: FC<Props> = ({ selected, handleClick, handleReset }) => {
        */}
       <div>
         <button
-          className='m-1 px-5 py-2.5 font-montserrat text-xs font-light text-green-900 underline sm:text-sm md:text-base'
+          className='m-1 rounded-3xl bg-neutral-300 px-5 py-2.5 font-montserrat text-xs font-light text-green-900 hover:bg-neutral-400 sm:text-sm md:text-base'
           onClick={() => handleReset()}
         >
           Reset

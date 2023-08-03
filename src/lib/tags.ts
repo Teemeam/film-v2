@@ -1,4 +1,4 @@
-const tags = [
+const tags: MyTag[][] = [
   [
     {
       name: 'Cinestill 50D',

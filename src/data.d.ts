@@ -211,3 +211,12 @@ type FormattedDescription = {
   film: string | undefined;
   camera: string | undefined;
 };
+
+/**
+ * My tags
+ */
+type MyTag = {
+  name: string;
+  label: string;
+  value: string;
+};
