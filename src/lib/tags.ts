@@ -41,6 +41,11 @@ const tags: MyTag[][] = [
       value: '400h',
     },
     {
+      name: 'Kodak Gold 200',
+      label: 'Gold 200',
+      value: 'gold',
+    },
+    {
       name: 'Ilford HP5 Plus 400',
       label: 'HP5 Plus 400',
       value: 'hp5plus',
