@@ -16,6 +16,7 @@ jobs:
         uses: withastro/action@v1
         with:
           node-version: '18.x'
+          package-manager: 'pnpm@8'
 
       - name: Sync
         uses: SamKirkland/FTP-Deploy-Action@4.3.0
