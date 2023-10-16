@@ -13,7 +13,7 @@ jobs:
         uses: actions/checkout@v3
 
       - name: Install dependencies and build project
-        uses: withastro/action@v0
+        uses: withastro/action@v1
         with:
           node-version: '18.x'
 

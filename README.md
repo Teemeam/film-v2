@@ -17,8 +17,6 @@ Fetch photos from the Flickr API.
 
 Requires Node 18.
 
-Withastro/action@v0.2.0 requires version 7 of pnpm.
-
 ## Preparations
 
 Create a Flickr App and use the app key to fetch images from the Flickr API. Methods are listed [in the App Garden](https://www.flickr.com/services/api/).
