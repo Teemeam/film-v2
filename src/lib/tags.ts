@@ -6,6 +6,11 @@ const tags: MyTag[][] = [
       value: '50d',
     },
     {
+      name: 'Cinestill 400D',
+      label: 'Cinestill 400D',
+      value: '400d',
+    },
+    {
       name: 'Cinestill 800T',
       label: 'Cinestill 800T',
       value: '800t',
