@@ -7,6 +7,7 @@ import { getOriginalWidth, getOriginalHeight } from '../lib/getOriginalDimension
 import Layout from '../layouts/Layout.astro';
 
 /* Components */
+// import Nav from '../components/Nav.astro';
 import Header from '../components/Header';
 import Images from '../components/Images.astro';
 import Footer from '../components/Footer';
@@ -67,6 +68,7 @@ generateSafelist(completeData); */
 
 <Layout title='Teemu Kakko Film Photo Showcase'>
   <main>
+    <!-- <Nav /> -->
     <Header />
     <Images data={completeData} />
     <Footer />
