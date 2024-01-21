@@ -12,17 +12,18 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
 
+      - name: Configure AWS Credentials
+        uses: aws-actions/configure-aws-credentials@v2
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: eu-west-1
+
       - name: Install dependencies and build project
         uses: withastro/action@v1
         with:
           node-version: '18.x'
           package-manager: 'pnpm@8'
 
-      - name: Sync
-        uses: SamKirkland/FTP-Deploy-Action@4.3.0
-        with:
-          server: ${{ secrets.ftp_server }}
-          username: ${{ secrets.ftp_username }}
-          password: ${{ secrets.ftp_password }}
-          local-dir: ./dist/
-          server-dir: ./public_html/film/
+      - name: Deploy project
+        run: aws s3 sync ./dist/ s3://kakkoteemu.fi/film --delete
