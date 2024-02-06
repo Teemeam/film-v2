@@ -26,4 +26,4 @@ jobs:
           package-manager: 'pnpm@8'
 
       - name: Deploy project
-        run: aws s3 sync ./dist/ s3://kakkoteemu.fi/film --delete
+        run: aws s3 sync ./dist/ s3://kakkoteemu.fi/film --cache-control="max-age=60" --acl="public-read" --delete
