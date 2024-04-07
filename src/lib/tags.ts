@@ -76,6 +76,11 @@ const tags: MyTag[][] = [
       value: 'portra800',
     },
     {
+      name: 'SantaColor 100',
+      label: 'SantaColor 100',
+      value: 'santacolor',
+    },
+    {
       name: 'Kodak T-Max 100',
       label: 'T-Max 100',
       value: 'tmax100',
