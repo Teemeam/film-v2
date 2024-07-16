@@ -22,7 +22,7 @@ jobs:
       - name: Install dependencies and build project
         uses: withastro/action@v1
         with:
-          node-version: '18.x'
+          node-version: '20.x'
           package-manager: 'pnpm@8'
 
       - name: Deploy project

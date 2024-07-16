@@ -9,14 +9,14 @@
     "astro": "astro"
   },
   "dependencies": {
-    "@astrojs/react": "^2.2.1",
-    "@astrojs/tailwind": "^4.0.0",
+    "@astrojs/react": "^3.6.0",
+    "@astrojs/tailwind": "^5.1.0",
     "@fontsource-variable/montserrat": "^5.0.5",
     "@types/react": "^18.2.14",
     "@types/react-dom": "^18.2.6",
-    "astro": "^2.7.3",
+    "astro": "4.11.5",
     "blurhash": "^2.0.5",
-    "blurhash-from-url": "^0.0.6",
+    "blurhash-from-url": "^0.0.8",
     "intersection-observer": "^0.12.2",
     "react": "^18.2.0",
     "react-blurhash": "^0.3.0",
@@ -30,6 +30,6 @@
     "prettier-plugin-tailwindcss": "^0.4.1"
   },
   "engines": {
-    "node": ">=18"
+    "node": ">=20"
   }
 }
