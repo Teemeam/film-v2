@@ -31,6 +31,11 @@ const tags: MyTag[][] = [
       value: 'fomapan100',
     },
     {
+      name: 'Foma Fomapan 200',
+      label: 'Fomapan 200',
+      value: 'fomapan200',
+    },
+    {
       name: 'Ilford FP4 Plus 125',
       label: 'FP4 Plus 125',
       value: 'fp4plus',
@@ -121,6 +126,11 @@ const tags: MyTag[][] = [
       name: 'Kodak VR35 K4a',
       label: 'Kodak VR35 K4a',
       value: 'vr35',
+    },
+    {
+      name: 'Mamiya C330 Professional F',
+      label: 'Mamiya C330 Professional F',
+      value: 'c330',
     },
     {
       name: 'Polaroid SX-70',
