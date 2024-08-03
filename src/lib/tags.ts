@@ -133,6 +133,11 @@ const tags: MyTag[][] = [
       value: 'c330',
     },
     {
+      name: 'Pingo',
+      label: 'Pingo',
+      value: 'pingo',
+    },
+    {
       name: 'Polaroid SX-70',
       label: 'Polaroid SX-70',
       value: 'sx70',
