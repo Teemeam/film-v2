@@ -1,10 +1,12 @@
 {
   "name": "film-v2",
   "type": "module",
-  "version": "0.0.9",
+  "version": "0.0.10",
   "scripts": {
     "dev": "astro dev",
     "build": "astro build",
+    "make": "cd scripts && make",
+    "oauth": "node ./scripts/oauth.mjs",
     "preview": "astro preview",
     "astro": "astro"
   },
