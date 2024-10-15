@@ -34,7 +34,7 @@ export const Image: FC<Props> = ({ data }) => {
   return (
     <div ref={imageRef} className='mb-5'>
       <a
-        href={data.flickrUrl}
+        // href={data.flickrUrl}
         target='_blank'
         rel='noopener noreferrer'
         aria-label='Open image on Flickr.'
