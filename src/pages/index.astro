@@ -1,5 +1,5 @@
 ---
-import credentials from '../lib/credentials';
+import { createFlickr, FetchTransport } from 'flickr-sdk';
 import { getOriginalWidth, getOriginalHeight } from '../lib/getOriginalDimensions';
 // import generateSafelist from '../lib/generateSafelist';
 
@@ -13,15 +13,29 @@ import Footer from '../components/Footer';
 import Test from '../components/Test';
 
 /**
+ * OAuth configuration
+ */
+const oauthConfig = {
+  consumerKey: import.meta.env.CONSUMER_KEY,
+  consumerSecret: import.meta.env.CONSUMER_SECRET,
+  oauthToken: import.meta.env.OAUTH_TOKEN,
+  oauthTokenSecret: import.meta.env.OAUTH_TOKEN_SECRET,
+};
+
+const transport = new FetchTransport();
+
+const flickr = createFlickr(oauthConfig, transport);
+
+/**
  * Fetch data
  */
-const response = await fetch(
-  `https://www.flickr.com/services/rest/?method=flickr.photosets.getPhotos&api_key=${credentials.app_key}&photoset_id=${credentials.photoset_id}&user_id=${credentials.user_id}&format=json&nojsoncallback=1`
-);
+const response = await flickr.flickr('flickr.photosets.getPhotos', {
+  photoset_id: import.meta.env.PHOTOSET_ID,
+  user_id: import.meta.env.USER_ID,
+  privacy_filter: '5',
+});
 
-const data: Data = await response.json();
-
-const photos: Photo[] = data.photoset.photo;
+const photos: Photo[] = response.photoset.photo;
 
 const completeData: CompleteData[] = [];
 
@@ -30,18 +44,18 @@ await Promise.all(
     /**
      * Fetch info
      */
-    const infoResponse = await fetch(
-      `https://www.flickr.com/services/rest/?method=flickr.photos.getInfo&api_key=${credentials.app_key}&photo_id=${photo.id}&format=json&nojsoncallback=1`
-    );
-    const infoData: InfoData = await infoResponse.json();
+    const infoResponse = await flickr.flickr('flickr.photos.getInfo', {
+      photo_id: photo.id,
+    });
+    const infoData: InfoData = await infoResponse;
 
     /**
      * Fetch sizes
      */
-    const sizeResponse = await fetch(
-      `https://www.flickr.com/services/rest/?method=flickr.photos.getSizes&api_key=${credentials.app_key}&photo_id=${photo.id}&format=json&nojsoncallback=1`
-    );
-    const sizeData: SizeData = await sizeResponse.json();
+    const sizeResponse = await flickr.flickr('flickr.photos.getSizes', {
+      photo_id: photo.id,
+    });
+    const sizeData: SizeData = await sizeResponse;
 
     const sizes: Size[] = sizeData.sizes.size;
 

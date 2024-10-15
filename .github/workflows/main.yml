@@ -24,6 +24,13 @@ jobs:
         with:
           node-version: '18.x'
           package-manager: 'pnpm@8'
+        env:
+          CONSUMER_KEY: ${{ secrets.CONSUMER_KEY }}
+          CONSUMER_SECRET: ${{ secrets.CONSUMER_SECRET }}
+          OAUTH_TOKEN: ${{ secrets.OAUTH_TOKEN }}
+          OAUTH_TOKEN_SECRET: ${{ secrets.OAUTH_TOKEN_SECRET }}
+          PHOTOSET_ID: ${{ secrets.PHOTOSET_ID }}
+          USER_ID: ${{ secrets.USER_ID }}
 
       - name: Deploy project
         run: aws s3 sync ./dist/ s3://kakkoteemu.fi/film --cache-control="max-age=60" --delete

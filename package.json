@@ -17,6 +17,7 @@
     "astro": "^2.7.3",
     "blurhash": "^2.0.5",
     "blurhash-from-url": "^0.0.6",
+    "flickr-sdk": "7.0.0-beta.9",
     "intersection-observer": "^0.12.2",
     "react": "^18.2.0",
     "react-blurhash": "^0.3.0",
@@ -25,6 +26,7 @@
     "tailwindcss": "^3.3.2"
   },
   "devDependencies": {
+    "dotenv": "^16.4.5",
     "prettier": "^3.0.0",
     "prettier-plugin-astro": "^0.11.0",
     "prettier-plugin-tailwindcss": "^0.4.1"
